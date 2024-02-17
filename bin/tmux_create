@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Get the current directory name to use as the session name
+SESSION_NAME=$(basename "$PWD")
+
+# Start a new tmux session detached
+tmux new-session -d -s "$SESSION_NAME"
+
+# Rename the first window and start neovim with the current directory
+tmux rename-window -t 0 'Neovim'
+tmux send-keys -t "$SESSION_NAME" 'nvim .' Enter 
+
+# Create a second window, name it, and start neovim with :term command
+tmux new-window -t "$SESSION_NAME" -n 'Neovim-Term'
+tmux send-keys -t "$SESSION_NAME:1" 'nvim -c ":term"' Enter
+
+# Attach to the tmux session
+tmux attach -t "$SESSION_NAME:0"
+
+
+# C-m acts like an enter
