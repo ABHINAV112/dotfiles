@@ -1,6 +1,3 @@
-export TERM='xterm-256color'
-export COLORTERM="truecolor"
-
 # bun completions
 [ -s "/Users/abhinav/.bun/_bun" ] && source "/Users/abhinav/.bun/_bun"
 
