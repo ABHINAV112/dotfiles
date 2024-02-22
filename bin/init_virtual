@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Get the name of the current directory to use as the image and container name
+DIR_NAME=$(basename "$(pwd)")
+
+# Define the Dockerfile name
+DOCKERFILE="Dockerfile.dev"
+
+# Check if the Dockerfile exists
+if [ -f "$DOCKERFILE" ]; then
+    echo "Using $DOCKERFILE for building the Docker image..."
+else
+    echo "$DOCKERFILE does not exist. Exiting..."
+    exit 1
+fi
+
+# Build the Docker image
+docker build -f $DOCKERFILE -t $DIR_NAME .
+
+# Check if a container with the same name already exists
+if [ "$(docker ps -aq -f name=^${DIR_NAME}$)" ]; then
+    # Stop and remove the existing container
+    echo "A container with the name $DIR_NAME already exists. Stopping and removing it..."
+    docker stop $DIR_NAME
+    docker rm $DIR_NAME
+fi
+
+# Run the container
+docker run -d --name $DIR_NAME --network host -v "$(pwd)":/usr/src/app $DIR_NAME
+
+echo "Container $DIR_NAME is running."
+

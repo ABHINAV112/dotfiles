@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Get the name of the current directory to use as the container's identifier
+DIR_NAME=$(basename "$(pwd)")
+
+# Check if the container is running
+CONTAINER_ID=$(docker ps -q -f name=^${DIR_NAME}$)
+
+if [ ! -z "$CONTAINER_ID" ]; then
+    echo "Stopping container $DIR_NAME..."
+    docker stop $CONTAINER_ID
+    echo "Container $DIR_NAME stopped."
+else
+    echo "No running container found for $DIR_NAME."
+fi
+
+# Check if the container exists (even if it's not running)
+CONTAINER_ID_ALL=$(docker ps -aq -f name=^${DIR_NAME}$)
+
+if [ ! -z "$CONTAINER_ID_ALL" ]; then
+    echo "Removing container $DIR_NAME..."
+    docker rm $CONTAINER_ID_ALL
+    echo "Container $DIR_NAME removed."
+else
+    echo "No container found to remove for $DIR_NAME."
+fi
+
