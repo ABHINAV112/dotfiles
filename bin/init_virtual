@@ -25,8 +25,16 @@ if [ "$(docker ps -aq -f name=^${DIR_NAME}$)" ]; then
     docker rm $DIR_NAME
 fi
 
+PORT_RANGE=$1
+
+# Validate if PORT_RANGE is not empty
+if [ -z "$PORT_RANGE" ]; then
+    echo "Port range not provided. Exiting..."
+    exit 1
+fi
+
 # Run the container
-docker run -d --name $DIR_NAME --network host -v "$(pwd)":/usr/src/app $DIR_NAME
+docker run -d --name $DIR_NAME -p $PORT_RANGE:$PORT_RANGE  -v "$(pwd)":/usr/src/app $DIR_NAME
 
 echo "Container $DIR_NAME is running."
 
