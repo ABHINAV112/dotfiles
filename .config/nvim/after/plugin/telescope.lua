@@ -3,19 +3,19 @@ local fb_actions = require "telescope".extensions.file_browser.actions
 require('telescope').setup { 
     defaults = { file_ignore_patterns = {"node_modules", "target"} },
     extensions = {
-    file_browser = {
-      theme = "ivy",
-      -- disables netrw and use telescope-file-browser in its place
-      hijack_netrw = true,
-      mappings = {
-          ["i"] = {
-              ["<leader>r"] = fb_actions.rename,
-              ["<leader>c"] = fb_actions.create_from_prompt,
-              ["d"] = fb_actions.remove,
-          }
-      },
-    },
-  }
+        file_browser = {
+            theme = "ivy",
+            -- disables netrw and use telescope-file-browser in its place
+            hijack_netrw = true,
+            mappings = {
+                ["i"] = {
+                    ["<leader>r"] = fb_actions.rename,
+                    ["<leader>c"] = fb_actions.create_from_prompt,
+                    ["d"] = fb_actions.remove,
+                }
+            },
+        },
+    }
 }
 
 require("telescope").load_extension "file_browser"
