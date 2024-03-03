@@ -13,3 +13,11 @@ export PATH="$PATH:/Users/abhinav/.cargo/bin"
 # auto complete for kubectl
 autoload -U +X compinit && compinit
 source <(kubectl completion zsh)
+
+
+# setting up zoxide to replace cd
+eval "$(zoxide init bash)"
+alias cd="z"
+
+# replace grep with rg
+alias grep="rg"
