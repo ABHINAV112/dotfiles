@@ -21,3 +21,5 @@ alias cd="z"
 
 # replace grep with rg
 alias grep="rg"
+
+set -o vi

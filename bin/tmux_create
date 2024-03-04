@@ -11,8 +11,7 @@ tmux rename-window -t 0 'Neovim'
 tmux send-keys -t "$SESSION_NAME" 'nvim .' Enter 
 
 # Create a second window, name it, and start neovim with :term command
-tmux new-window -t "$SESSION_NAME" -n 'Neovim-Term'
-tmux send-keys -t "$SESSION_NAME:1" 'nvim -c ":term"' Enter
+tmux new-window -t "$SESSION_NAME" -n 'Terminal'
 
 # Attach to the tmux session
 tmux attach -t "$SESSION_NAME:0"
