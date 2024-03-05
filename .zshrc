@@ -1,14 +1,14 @@
 # bun completions
-[ -s "~/.bun/_bun" ] && source "~/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-export PATH="$PATH:~/homebrew/bin"
-export PATH="~/homebrew/opt/mongodb-community@4.4/bin:$PATH"
-export PATH="~/bin:$PATH"
-export PATH="$PATH:~/.cargo/bin"
+export PATH="$PATH:$HOME/homebrew/bin"
+export PATH="$HOME/homebrew/opt/mongodb-community@4.4/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+export PATH="$PATH:$HOME/.cargo/bin"
 
 # auto complete for kubectl
 autoload -U +X compinit && compinit
