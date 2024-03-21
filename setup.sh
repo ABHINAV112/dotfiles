@@ -7,3 +7,5 @@ brew install zoxide
 brew install fzf
 
 brew install ripgrep
+
+brew install gh
