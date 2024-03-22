@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Directory to monitor
+DIRECTORY="$(pwd)"
+
+# Command to execute when a change occurs
+COMMAND_TO_RUN="$(pwd)/watch_script.sh"
+
+echo "Start monitoring the directory for file changes"
+fswatch -0 "$DIRECTORY" | while read -d "" FILE
+do
+    echo "Change detected in $FILE. Running $COMMAND_TO_RUN"
+    sh "$COMMAND_TO_RUN"
+done
+
