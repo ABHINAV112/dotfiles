@@ -8,8 +8,8 @@ brew install ripgrep
 brew install gh
 brew install fswatch
 brew install jq
-brew install yabai
-brew install skhd
+brew install koekeishiya/formulae/yabai
+brew install koekeishiya/formulae/skhd
 
 # yabai --install-sa TODO
 # yabai --load-sa
