@@ -65,6 +65,7 @@ alias ls='ls --color'
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
+eval "$(pyenv init -)"
 
 # auto complete for kubectl
 autoload -U +X compinit && compinit
