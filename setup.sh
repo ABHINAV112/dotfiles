@@ -2,6 +2,8 @@ chmod +x $HOME/bin/*
 
 git config --global push.autoSetupRemote true
 
+brew tap homebrew/cask-fonts
+brew install --cask font-jetbrains-mono-nerd-font
 brew install zoxide
 brew install fzf
 brew install ripgrep
