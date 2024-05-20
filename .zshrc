@@ -85,6 +85,8 @@ export PATH="$PATH:$HOME/homebrew/bin"
 export PATH="$HOME/homebrew/opt/mongodb-community@4.4/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/homebrew/anaconda3/bin"
+
 
 # setting up zoxide to replace cd
 alias cd="z"
@@ -101,3 +103,19 @@ if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-clou
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f "$HOME/.p10k.zsh" ]] || source "$HOME/.p10k.zsh"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/abhinav/homebrew/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/abhinav/homebrew/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/abhinav/homebrew/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/abhinav/homebrew/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
