@@ -37,6 +37,7 @@ zinit snippet OMZP::command-not-found
 bindkey -v
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
+bindkey '^y' autosuggest-accept
 
 # History
 HISTSIZE=5000
