@@ -6,5 +6,6 @@ else
     require("abhinav.remap")
     require("abhinav.packer")
     require("abhinav.default")
+    require("abhinav.quickfix")
 end
 
