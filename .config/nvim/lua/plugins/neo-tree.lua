@@ -9,4 +9,12 @@ return {
       },
     },
   },
+  keys = {
+    {
+      "<leader>nt",
+      function()
+        vim.cmd("Neotree toggle")
+      end,
+    },
+  },
 }
