@@ -25,6 +25,13 @@ return {
           "vue",
         },
       })
+      lspconfig.terraformls.setup({
+        init_options = {
+          terraform = {
+            path = "/opt/homebrew/bin/terraform",
+          },
+        },
+      })
     end,
   },
   {

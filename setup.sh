@@ -2,6 +2,8 @@ chmod +x $HOME/bin/*
 
 git config --global push.autoSetupRemote true
 
+sudo ln -s $HOME/homebrew/ /opt/
+
 brew update
 brew tap homebrew/cask-fonts
 
