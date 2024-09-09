@@ -17,6 +17,10 @@ ctrl + alt - r : brew services restart yabai
 
 # Application shortcuts
 ctrl + cmd - 1: open -a "Arc"
+ctrl + cmd - a: open -a "Arc"
 ctrl + cmd - 2: open -a "Alacritty"
+ctrl + cmd - t: open -a "Alacritty"
 ctrl + cmd - 3: open -a "Notion"
+ctrl + cmd - n: open -a "Notion"
 ctrl + cmd - 4: open -a "Microsoft Teams"
+ctrl + cmd - m: open -a "Microsoft Teams"
