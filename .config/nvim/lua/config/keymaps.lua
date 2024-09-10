@@ -29,3 +29,10 @@ for i = 1, #str do
   local character = str:sub(i, i)
   vim.keymap.set("n", string.format("'%s", character), string.format("'%szz", character))
 end
+
+-- move lines up and down
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- lsp format
+vim.keymap.set({ "n", "v" }, "<leader>lf", vim.lsp.buf.format)
