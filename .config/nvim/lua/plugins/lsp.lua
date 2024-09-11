@@ -23,6 +23,10 @@ return {
           "javascript",
           "typescript",
           "vue",
+          "javascriptreact",
+          "javascript.jsx",
+          "typescriptreact",
+          "typescript.tsx",
         },
       })
       lspconfig.terraformls.setup({
