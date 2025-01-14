@@ -27,4 +27,8 @@ return {
     "SchemaStore.nvim",
     enabled = false,
   },
+  {
+    "fzf-lua.nvim",
+    enabled = false,
+  },
 }
