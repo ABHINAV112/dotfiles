@@ -28,7 +28,7 @@ return {
     enabled = false,
   },
   {
-    "fzf-lua.nvim",
+    "fzf-lua",
     enabled = false,
   },
 }
