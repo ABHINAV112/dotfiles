@@ -16,19 +16,11 @@ ctrl + alt - s : brew services start yabai
 ctrl + alt - r : brew services restart yabai
 
 # Application shortcuts
-ctrl + cmd - 1: open -a "Arc"
 ctrl + cmd - a: open -a "Arc"
-ctrl + cmd - 2: open -a "Alacritty"
 ctrl + cmd - t: open -a "Alacritty"
-ctrl + cmd - 3: open -a "Notion"
 ctrl + cmd - n: open -a "Notion"
-ctrl + cmd - 4: open -a "Microsoft Teams"
 ctrl + cmd - m: open -a "Microsoft Teams"
-ctrl + cmd - 5: open -a "Whatsapp"
 ctrl + cmd - w: open -a "Whatsapp"
-ctrl + cmd - 6: open -a "Discord"
 ctrl + cmd - d: open -a "Discord"
-ctrl + cmd - 7: open -a "Postman"
 ctrl + cmd - p: open -a "Postman"
-ctrl + cmd - 8: open -a "Google Chrome"
 ctrl + cmd - c: open -a "Google Chrome"
