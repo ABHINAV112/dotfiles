@@ -1,0 +1,4 @@
+KUBECONFIG=~/.kube/config:$1 kubectl config view --merge --flatten >/tmp/temp-config.yaml
+mv /tmp/temp-config.yaml ~/.kube/config
+chmod 600 ~/.kube/config
+
