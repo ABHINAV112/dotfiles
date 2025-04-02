@@ -58,4 +58,6 @@ return {
       },
     },
   },
+  -- Import Rust extras for LazyVim
+  { import = "lazyvim.plugins.extras.lang.rust" },
 }
