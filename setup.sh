@@ -21,3 +21,9 @@ brew install pyenv-virtualenv
 skhd --start-service
 
 tmux source $HOME/.tmux.conf
+
+# if argument equals "cursor"
+if [ "$1" = "cursor" ]; then
+    brew install --cask cursor
+    defaults write $(osascript -e 'id of app "Cursor"') ApplePressAndHoldEnabled -bool false
+fi
