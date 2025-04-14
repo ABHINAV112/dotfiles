@@ -1,15 +1,3 @@
--- VSCode Neovim Integration Configuration
--- Helper functions for keymaps
-local function nv_keymap(lhs, rhs)
-  vim.api.nvim_set_keymap('n', lhs, rhs, { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('v', lhs, rhs, { noremap = true, silent = true })
-end
-
-local function nx_keymap(lhs, rhs)
-  vim.api.nvim_set_keymap('n', lhs, rhs, { silent = true })
-  vim.api.nvim_set_keymap('v', lhs, rhs, { silent = true })
-end
-
 -- Set debug logging off by default
 vim.g.vscode_debug_log = true
 
@@ -23,14 +11,6 @@ end
 
 -- Basic navigation functions and keymaps
 vim.g.mapleader = " "
-
-nv_keymap('s', '}')
-nv_keymap('S', '{')
-nv_keymap('<leader>h', '^')
-nv_keymap('<leader>l', '$')
-nv_keymap('<leader>a', '%')
-nx_keymap('j', 'gj')
-nx_keymap('k', 'gk')
 
 -- Comment functions and keymaps
 local comment = {
@@ -184,15 +164,15 @@ local function halfPage(direction)
   local current_line = vim.fn.line('.')
   local window_height = vim.fn.winheight(0)
   local half_height = math.floor(window_height / 2)
-  local target_line = current_line + (direction * half_height)
-  vim.cmd("normal! " .. half_height .. "gj")
+  local target_line = current_line + (direction.value * half_height)
+  vim.cmd("normal! " .. half_height .. direction.key)
   centerLine()
 end
 
 local scroll = {
   directions = {
-    up = scroll_direction_up,
-    down = scroll_direction_down
+    up = { value = scroll_direction_up, key = "gk" },
+    down = { value = scroll_direction_down, key = "gj" }
   },
   halfPage = halfPage,
   centerLine = centerLine
