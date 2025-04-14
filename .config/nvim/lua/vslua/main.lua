@@ -1,5 +1,4 @@
 -- VSCode Neovim Integration Configuration
-
 -- Helper functions for keymaps
 local function nv_keymap(lhs, rhs)
   vim.api.nvim_set_keymap('n', lhs, rhs, { noremap = true, silent = true })
@@ -10,6 +9,17 @@ local function nx_keymap(lhs, rhs)
   vim.api.nvim_set_keymap('n', lhs, rhs, { silent = true })
   vim.api.nvim_set_keymap('v', lhs, rhs, { silent = true })
 end
+
+-- Set debug logging off by default
+vim.g.vscode_debug_log = true
+
+-- Debug logging function
+local function log(message)
+  if vim.g.vscode_debug_log then
+    print("[VSCode Neovim Debug]: " .. tostring(message))
+  end
+end
+
 
 -- Basic navigation functions and keymaps
 vim.g.mapleader = " "
@@ -27,8 +37,7 @@ local comment = {
   selected = function()
     vim.fn.VSCodeNotifyRange("editor.action.commentLine", vim.fn.line("v"), vim.fn.line("."), 1)
   end
-}
-vim.keymap.set({ 'n', 'v' }, "<leader>gc", comment.selected)
+} vim.keymap.set({ 'n', 'v' }, "<leader>gc", comment.selected)
 
 -- Workbench functions and keymaps
 local workbench = {
@@ -160,3 +169,43 @@ vim.keymap.set({ 'n' }, "<C-h>", window.moveLeft)
 vim.keymap.set({ 'n' }, "<C-j>", window.moveDown)
 vim.keymap.set({ 'n' }, "<C-k>", window.moveUp)
 vim.keymap.set({ 'n' }, "<C-l>", window.moveRight)
+
+
+-- Scroll functions and keymaps
+local scroll_direction_up = -1
+local scroll_direction_down = 1
+
+local function centerLine()
+  local current_line = vim.fn.line('.')
+  vim.fn.VSCodeNotify("revealLine", { lineNumber = current_line, at = "center" })
+end
+
+local function halfPage(direction)
+  local current_line = vim.fn.line('.')
+  local window_height = vim.fn.winheight(0)
+  local half_height = math.floor(window_height / 2)
+  local target_line = current_line + (direction * half_height)
+  vim.cmd("normal! " .. half_height .. "gj")
+  centerLine()
+end
+
+local scroll = {
+  directions = {
+    up = scroll_direction_up,
+    down = scroll_direction_down
+  },
+  halfPage = halfPage,
+  centerLine = centerLine
+}
+
+scroll.halfPageDown = function() return scroll.halfPage(scroll.directions.down) end
+scroll.halfPageUp = function() return scroll.halfPage(scroll.directions.up) end
+
+vim.keymap.set({ 'n', 'v' }, "<C-d>", scroll.halfPageDown)
+vim.keymap.set({ 'n', 'v' }, "<C-u>", scroll.halfPageUp)
+
+vim.keymap.set('n', 'n', function()
+  vim.cmd("normal! n")
+  centerLine()
+  log("Moved to next occurrence")
+end, { noremap = true, silent = true })
