@@ -30,36 +30,13 @@ local comment = {
 }
 vim.keymap.set({ 'n', 'v' }, "<leader>gc", comment.selected)
 
--- Editor functions and keymaps
-local editor = {
-  closeActive = function()
-    vim.fn.VSCodeNotify("workbench.action.closeActiveEditor")
-  end,
-  closeOther = function()
-    vim.fn.VSCodeNotify("workbench.action.closeOtherEditors")
-  end,
-  organizeImport = function()
-    vim.fn.VSCodeNotify("editor.action.organizeImports")
-  end
-}
-vim.keymap.set({ 'n' }, "<leader>i", editor.organizeImport)
-vim.keymap.set({ 'n' }, "<leader>n", "<cmd>noh<cr>")
-
 -- Workbench functions and keymaps
 local workbench = {
   showCommands = function()
     vim.fn.VSCodeNotify("workbench.action.showCommands")
-  end,
-  previousEditor = function()
-    vim.fn.VSCodeNotify("workbench.action.previousEditor")
-  end,
-  nextEditor = function()
-    vim.fn.VSCodeNotify("workbench.action.nextEditor")
   end
 }
 vim.keymap.set({ 'n', 'v' }, "<leader> ", workbench.showCommands)
-vim.keymap.set({ 'n', 'v' }, "H", workbench.previousEditor)
-vim.keymap.set({ 'n', 'v' }, "L", workbench.nextEditor)
 
 -- Git functions and keymaps
 local git = {
@@ -100,26 +77,13 @@ local project = {
   end
 }
 vim.keymap.set({ 'n' }, "<leader>pf", project.findFile)
-vim.keymap.set({ 'n' }, "<C-space>s", project.switch)
+vim.keymap.set({ 'n' }, "<leader>ps", project.switch)
 vim.keymap.set({ 'n' }, "<leader>pt", project.tree)
 
 -- File functions and keymaps
 local file = {
-  new = function()
-    vim.fn.VSCodeNotify("workbench.explorer.fileView.focus")
-    vim.fn.VSCodeNotify("explorer.newFile")
-  end,
-  save = function()
-    vim.fn.VSCodeNotify("workbench.action.files.save")
-  end,
-  saveAll = function()
-    vim.fn.VSCodeNotify("workbench.action.files.saveAll")
-  end,
   format = function()
     vim.fn.VSCodeNotify("editor.action.formatDocument")
-  end,
-  showInExplorer = function()
-    vim.fn.VSCodeNotify("workbench.files.action.showActiveFileInExplorer")
   end,
   rename = function()
     vim.fn.VSCodeNotify("workbench.files.action.showActiveFileInExplorer")
@@ -127,8 +91,6 @@ local file = {
   end
 }
 vim.keymap.set({ 'n' }, "<space>lf", file.format)
-vim.keymap.set({ 'n' }, "<space>fn", file.new)
-vim.keymap.set({ 'n' }, "<space>ft", file.showInExplorer)
 vim.keymap.set({ 'n' }, "<space>fr", file.rename)
 
 -- Toggle functions and keymaps
@@ -176,18 +138,25 @@ vim.keymap.set({ 'n' }, "<leader>sR", search.referenceInSideBar)
 vim.keymap.set({ 'n' }, "<leader>sp", search.project)
 vim.keymap.set({ 'n' }, "<leader>st", search.text)
 
--- VSCode functions and keymaps
-local vscode = {
-  focusEditor = function()
-    vim.fn.VSCodeNotify("workbench.action.focusActiveEditorGroup")
+
+
+-- Window navigation functions and keymaps
+local window = {
+  moveLeft = function()
+    vim.fn.VSCodeNotify("workbench.action.navigateLeft")
   end,
-  moveSideBarRight = function()
-    vim.fn.VSCodeNotify("workbench.action.moveSideBarRight")
+  moveDown = function()
+    vim.fn.VSCodeNotify("workbench.action.navigateDown")
   end,
-  moveSideBarLeft = function()
-    vim.fn.VSCodeNotify("workbench.action.moveSideBarLeft")
+  moveUp = function()
+    vim.fn.VSCodeNotify("workbench.action.navigateUp")
+  end,
+  moveRight = function()
+    vim.fn.VSCodeNotify("workbench.action.navigateRight")
   end
 }
-vim.keymap.set({ 'n' }, "<leader>ve", vscode.focusEditor)
-vim.keymap.set({ 'n' }, "<leader>vl", vscode.moveSideBarLeft)
-vim.keymap.set({ 'n' }, "<leader>vr", vscode.moveSideBarRight)
+
+vim.keymap.set({ 'n' }, "<C-h>", window.moveLeft)
+vim.keymap.set({ 'n' }, "<C-j>", window.moveDown)
+vim.keymap.set({ 'n' }, "<C-k>", window.moveUp)
+vim.keymap.set({ 'n' }, "<C-l>", window.moveRight)
