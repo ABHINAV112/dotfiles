@@ -1,5 +1,5 @@
 -- Set debug logging off by default
-vim.g.vscode_debug_log = true
+vim.g.vscode_debug_log = false
 
 -- Debug logging function
 local function log(message)
@@ -58,15 +58,11 @@ local project = {
   findFile = function()
     vim.fn.VSCodeNotify("workbench.action.quickOpen")
   end,
-  switch = function()
-    vim.fn.VSCodeNotify("workbench.action.openRecent")
-  end,
   tree = function()
     vim.fn.VSCodeNotify("workbench.view.explorer")
   end
 }
 vim.keymap.set({ 'n' }, "<leader>pf", project.findFile)
-vim.keymap.set({ 'n' }, "<leader>ps", project.switch)
 vim.keymap.set({ 'n' }, "<leader>pt", project.tree)
 
 -- File functions and keymaps
@@ -102,7 +98,7 @@ local symbol = {
   end
 }
 vim.keymap.set({ 'v' }, "<leader>r", refactor.showMenu)
-vim.keymap.set({ 'n' }, "<leader>rr", symbol.rename)
+vim.keymap.set({ 'n' }, "<leader>rn", symbol.rename)
 vim.api.nvim_set_keymap('n', '<leader>rd', 'V%d', { silent = true })
 vim.api.nvim_set_keymap('n', '<leader>rv', 'V%', { silent = true })
 
@@ -195,3 +191,30 @@ vim.keymap.set({ 'n', 'v' }, 'G', function()
   centerLine()
   log("Moved to the bottom of the file")
 end, { noremap = true, silent = true })
+
+-- to copy from vim to clipboard
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+
+-- move lines up and down silently
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
+
+-- Options are automatically loaded before lazy.nvim startup
+-- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+-- Add any additional options here
+--
+vim.opt.clipboard = ""
+
+-- avoid highlighting search terms
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+
+-- long undodir
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
+
+vim.g.lazyvim_check_order = false
