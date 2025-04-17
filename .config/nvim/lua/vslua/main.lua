@@ -148,9 +148,6 @@ vim.keymap.set({ 'n' }, "<C-l>", window.moveRight)
 
 
 -- Scroll functions and keymaps
-local scroll_direction_up = -1
-local scroll_direction_down = 1
-
 local function centerLine()
   local current_line = vim.fn.line('.')
   vim.fn.VSCodeNotify("revealLine", { lineNumber = current_line, at = "center" })
@@ -167,8 +164,8 @@ end
 
 local scroll = {
   directions = {
-    up = { value = scroll_direction_up, key = "gk" },
-    down = { value = scroll_direction_down, key = "gj" }
+    up = { value = -1, key = "gk" },
+    down = { value = 1, key = "gj" }
   },
   halfPage = halfPage,
   centerLine = centerLine
