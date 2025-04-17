@@ -4,5 +4,6 @@
         "asvetliakov.vscode-neovim": 1
     },
     "workbench.colorTheme": "Catppuccin Macchiato",
-    "editor.lineNumbers": "relative"
+    "editor.lineNumbers": "relative",
+    "workbench.editor.showTabs": "none"
 }
