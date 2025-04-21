@@ -215,3 +215,13 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
 vim.g.lazyvim_check_order = false
+
+-- Add this function to close the editors in the current group
+local function closeCurrentGroupEditors()
+  log("Attempting to close current group editors")
+  vim.fn.VSCodeNotify("workbench.action.closeEditorsInGroup")
+  log("Close command sent")
+end
+
+-- Override the :q command to use the new function
+vim.keymap.set({ 'n', 'v' }, "<leader>q", closeCurrentGroupEditors)
