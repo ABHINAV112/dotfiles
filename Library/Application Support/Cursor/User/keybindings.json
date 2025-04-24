@@ -228,11 +228,43 @@
     {
         "key": "ctrl+p",
         "command": "workbench.action.quickOpen",
-        "when": "!inQuickOpen"
+        "when": "!inQuickOpen && !terminalFocus && !suggestWidgetVisible"
     },
     {
         "key": "enter",
         "command": "-renameFile",
         "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+    },
+    {
+        "key": "shift+cmd+p",
+        "command": "-workbench.action.showCommands"
+    },
+    {
+        "key": "ctrl+space shift+f",
+        "command": "workbench.action.showCommands"
+    },
+    {
+        "key": "ctrl+space ctrl+0",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    {
+        "key": "ctrl+space 0",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    {
+        "key": "ctrl+space ctrl+1",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    {
+        "key": "ctrl+space 1", 
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    {
+        "key": "ctrl+0",
+        "command": "-workbench.action.lastEditorInGroup"
     }
 ]
