@@ -178,7 +178,7 @@ vim.keymap.set({ 'n', 'v' }, "<C-d>", scroll.halfPageDown)
 vim.keymap.set({ 'n', 'v' }, "<C-u>", scroll.halfPageUp)
 
 vim.keymap.set('n', 'n', function()
-  vim.cmd("normal! n")
+  pcall(vim.cmd, "normal! n")
   centerLine()
   log("Moved to next occurrence")
 end, { noremap = true, silent = true })
