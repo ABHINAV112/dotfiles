@@ -1,0 +1,16 @@
+{
+    "window.commandCenter": 1,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "workbench.colorTheme": "Cursor Dark Midnight",
+    "editor.lineNumbers": "relative",
+    "workbench.editor.showTabs": "none",
+    "window.confirmSaveUntitledWorkspace": false,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "extensions.ignoreRecommendations": true,
+    "files.associations": {
+        "*.yaml.gotmpl": "yaml"
+    },
+    "editor.fontFamily": "JetBrainsMono Nerd Font"
+}
