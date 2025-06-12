@@ -1,5 +1,8 @@
 #!/bin/bash
 
+WORK_DIR="${1:-.}"
+cd $WORK_DIR
+
 # Get the current directory name to use as the session name
 SESSION_NAME=$(basename "$PWD")
 
@@ -16,5 +19,6 @@ tmux new-window -t "$SESSION_NAME" -n 'Terminal'
 # Attach to the tmux session
 tmux attach -t "$SESSION_NAME:0"
 
+cd -
 
 # C-m acts like an enter
